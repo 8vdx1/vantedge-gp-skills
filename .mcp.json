@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vantedge": {
+      "type": "http",
+      "url": "https://fundos.vantedgeai.com/mcp"
+    }
+  }
+}

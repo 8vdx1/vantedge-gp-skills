@@ -1,0 +1,29 @@
+{
+  "name": "vantedge-gp",
+  "version": "0.1.0",
+  "description": "GP & IR workflows for VantedgeAI — deal pipeline, LP CRM, and the unified email inbox. Triage inbound mail, intake deals from forwarded decks, work the fundraise funnel, and keep the CRM honest — all through the VantedgeAI MCP server with human approval on every write.",
+  "author": {
+    "name": "VantedgeAI",
+    "email": "support@vantedgeai.com"
+  },
+  "homepage": "https://platform.vantedgeai.com",
+  "repository": "https://github.com/8vdx1/vantedge-gp-skills",
+  "license": "MIT",
+  "keywords": [
+    "deal-pipeline",
+    "lp-crm",
+    "email-inbox",
+    "fundraising",
+    "investor-relations",
+    "deal-intake",
+    "venture-capital",
+    "private-credit",
+    "crm"
+  ],
+  "mcpServers": {
+    "vantedge": {
+      "type": "http",
+      "url": "https://fundos.vantedgeai.com/mcp"
+    }
+  }
+}
