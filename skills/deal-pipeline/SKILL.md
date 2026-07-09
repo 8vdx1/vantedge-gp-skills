@@ -23,7 +23,27 @@ Any other stage string is rejected. Moves are bulk: `vi_move_deal_stage(dealIds=
 
 `vi_create_deal` requires **all three**: `companyName`, `dealStatus` (e.g. `ACTIVE`), and `vcFundId` — the fund this deal belongs to. `vcFundId` is the one users forget: ask which fund, or if the firm has one obvious fund, confirm it. Optional: `dealName`, `dealStage` (default LEAD). Propose the full field set for approval before creating.
 
-**Deal intake from a forwarded email/deck:** `vi_get_email` for the full body + attachments → extract company, one-liner, round, metrics → propose the deal → on approval create it → optionally `create_deal_room` + a folder skeleton (`create_folder`) and upload the deck (`get_upload_url`/`confirm_upload`) so `search_documents` can ground future questions. Each write approved separately or as an approved batch.
+**Deal intake from a LOCAL FILE (the primary path — this is a Claude Code skill).**
+The GP hands you a file — a pitch deck (PDF), a one-pager (docx), a term sheet, even a
+screenshot — or pastes the text. You read it **yourself with local file tools** (Read the
+PDF/doc/image directly; Claude Code has filesystem access — the MCP does NOT, so this is the
+whole reason it's a local skill). Then:
+1. **Read + extract** from the file: company name, one-liner, sector/geography, round
+   (stage, size, raised/committed), key metrics (ARR, growth), the contact. Show the GP what
+   you pulled and let them correct it — an extraction from a deck is a draft, not gospel.
+2. **Dedupe:** `vi_list_deals(search=<company>)` — if it already exists (maybe it arrived by
+   email and auto-created), stop and offer to update/note instead of duplicating.
+3. **Propose the deal** (all three required fields — see above; ask which `vcFundId`), get approval → `vi_create_deal`.
+4. **File the source doc** (optional, approved): `create_deal_room` → `create_folder` skeleton →
+   upload the actual file via `get_upload_url` (presigned PUT — honour the returned
+   `required_headers`) → `confirm_upload`. Now `search_documents` can ground future questions on
+   the real deck, not your summary.
+5. Report: deal id, stage, fund, room link, what was filed, suggested next action.
+
+(Deals also arrive **by email** — the platform auto-ingests forwards to the pipeline inbox and
+creates the deal itself. That path needs no skill; to work with those, read them via
+`vi_list_emails(deal_id=…)` → `vi_get_email`. `/deal-intake` is specifically for the files that
+land *outside* that pipe — the deck someone handed you in person, over Slack, wherever.)
 
 ## "Any update on [company]?" — the evidence pattern
 

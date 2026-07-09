@@ -16,7 +16,7 @@ Packages the VantedgeAI CRM + email surface into 10 slash commands and 10 backgr
 |---------|----------------------|
 | `/vantedge-gp:brief` | "Catch me up" — what changed since yesterday: new mail, LPs that moved, deals that shifted. |
 | `/vantedge-gp:inbox` | Reads your inbox and turns it into a to-do list — what came in, what it means, what to do. |
-| `/vantedge-gp:deal-intake` | Forward a deck, get a deal — pulls out the company, creates it, files the deck. |
+| `/vantedge-gp:deal-intake` | Hand it a deck/file, get a deal — reads the file, pulls out the company, creates it, files the deck. |
 | `/vantedge-gp:pipeline-review` | Your whole pipeline, stage by stage, with the real email behind each update and what's gone stale. |
 | `/vantedge-gp:velocity` | Where deals and LPs get *stuck* — time-in-stage, the bottleneck, and who's sat too long. |
 | `/vantedge-gp:lp-followups` | Which LPs have gone quiet — ranked by who matters, with nudges drafted. |
