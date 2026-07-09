@@ -44,6 +44,20 @@ Tool to add: `vi_list_tasks` (expose `myOpen` + `list`). **The `get-tasks` skill
 depends on this — it will report "needs vi_list_tasks" until the tool lands.**
 (Symmetry nice-to-have: `vi_list_notes` — `CrmNotesService` has the equivalent reads.)
 
+## 2b. vi_list_consultant_relationships (or advisors-for-LP) read
+Unblocks the *precise* half of `consultant-map`: which LPs a given consultant advises
+("win X → unlock these 4 named prospects worth $30M"). Backend exists — `LpConsultantRelationshipRepository`,
+plus the app's `/consultants/by-vcfirm/:vcFirmId` and `getAdvisorsForLp` endpoints — just not on the
+internal controller. The consultant *flags* (`isConsultant`/`consultantType`/`aumAdvised`) already come
+through `vi_list_lp_prospects`, so the roster + advised-AUM ranking works today; only the per-LP graph is blocked.
+
+## 2c. vi_lp_connections read  ← unblocks /lp-connections
+Expose the "who do I know at this LP" network match (`lp_linkedin_connections`: team LinkedIn
+exports fuzzy-matched to an LP's org). Backend + fuzzy matching already built for the LP-CRM UI;
+no MCP tool. Tool: `vi_lp_connections(lp_id)` → matched contacts (name, title, holding team member,
+confidence). This is the SAFE, owned-data warm-path layer — the no-browser complement to the
+live/risky `who-knows-whom`. High value, low risk; arguably do before the live LinkedIn path.
+
 ## 3. /brief — daily digest  ← ties it together
 One morning command. Read-only; anything actionable is a proposal. Ingredients (what the
 MCP can feed it):

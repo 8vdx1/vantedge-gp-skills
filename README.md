@@ -8,7 +8,7 @@ The GP / investor-relations persona: working inbound deal flow, running a fundra
 
 ## What this plugin does
 
-Packages the VantedgeAI CRM + email surface into 7 slash commands and 7 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
+Packages the VantedgeAI CRM + email surface into 10 slash commands and 10 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
 
 ## Commands
 
@@ -21,6 +21,9 @@ Packages the VantedgeAI CRM + email surface into 7 slash commands and 7 backgrou
 | `/vantedge-gp:who-knows-whom` | Warmest intro path to a person/company — email graph + CRM, optional ⚠️ consent-gated LinkedIn check |
 | `/vantedge-gp:get-tasks` | Open CRM todos, prioritized by overdue/due and grouped by LP/deal (needs `vi_list_tasks` — see TODO.md) |
 | `/vantedge-gp:brief` | Day-on-day morning brief: what changed since yesterday across inbox, funnel, and pipeline |
+| `/vantedge-gp:velocity` | Time-in-stage, bottleneck stage, and stalled deals/LPs (LP stage-clock is exact) |
+| `/vantedge-gp:consultant-map` | Gatekeeper consultants ranked by advised AUM — one relationship, many LPs |
+| `/vantedge-gp:lp-connections` | "Who do I know at this LP?" via owned LinkedIn-export matches (needs `vi_lp_connections` — see TODO.md) |
 
 ## Skills
 
@@ -33,6 +36,9 @@ Packages the VantedgeAI CRM + email surface into 7 slash commands and 7 backgrou
 | `who-knows-whom` | Warm-path lookup: verified email-graph strength first, LinkedIn breadth second, optional live 2nd-degree check |
 | `get-tasks` | Surface + prioritize open CRM todos (depends on the not-yet-shipped `vi_list_tasks` read tool) |
 | `daily-brief` | Day-on-day change summary — inbox + funnel + deals-since-yesterday, delta not dump |
+| `velocity` | Time-in-stage analytics: LP `stageChangedAt` (exact) + deal freshness, bottleneck + stalled detection |
+| `consultant-map` | Gatekeeper roster by advised AUM; advisory graph flagged as a doorway |
+| `lp-connections` | Owned-data warm paths (LinkedIn-export matches); safe complement to who-knows-whom, needs a read tool |
 
 ## ⚠️ LinkedIn risk warning (`who-knows-whom`)
 
