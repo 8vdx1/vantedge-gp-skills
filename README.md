@@ -66,6 +66,19 @@ After install, the commands appear as `/vantedge-gp:<name>` (e.g. `/vantedge-gp:
 
 > **Note on `/deal-intake` and other file-reading skills:** these read files off your local disk, so they only work in **Claude Code**, not claude.ai.
 
+## Updating
+
+Your install is a snapshot, not a live mirror — you pull updates when you want them. There are **two independent layers**:
+
+- **Skills / commands changed** (new command, tweaked behavior — published to this repo): refresh the marketplace and re-install.
+  ```bash
+  /plugin marketplace update vantedge-gp-skills
+  /plugin install vantedge-gp@vantedge-gp-skills
+  ```
+- **A new MCP *tool* appeared** (e.g. a new capability added to the VantedgeAI server): that's not in this repo — **reconnect the VantedgeAI MCP connector**. Tool catalogues are cached when you connect, so a brand-new tool stays invisible until you reconnect.
+
+Rule of thumb: *skill changed → update the plugin; new capability → reconnect the MCP.*
+
 ## Connection
 
 The plugin registers the VantedgeAI MCP server (`https://fundos.vantedgeai.com/mcp`). Authenticate via OAuth on first use, or set a Bearer API key for headless use. If a tool referenced by these skills is missing from your session, reconnect the connector — tool catalogues are cached at connect time.
