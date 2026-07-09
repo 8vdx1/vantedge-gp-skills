@@ -18,6 +18,11 @@ Non-negotiable rules:
 - Steps 1–2 (owned data) are always safe and always come first. LinkedIn is the last resort for a high-value target, not the default.
 - This step requires a local browser session (Claude Code + the user's Chrome). In environments without one (claude.ai), do Steps 1–2 only and say so.
 
+**Local setup for Step 3** (one-time, user's machine):
+1. Launch Chrome with remote debugging, using the user's normal profile (so LinkedIn is logged in):
+   `open -a "Google Chrome" --args --remote-debugging-port=9222` (macOS) or `chrome --remote-debugging-port=9222` (elsewhere). Verify with `curl localhost:9222/json/version`.
+2. Drive it over CDP with whatever is available — `npx playwright` (connect via `chromium.connectOverCDP("http://localhost:9222")`) or `puppeteer.connect({browserURL})`. Reuse the existing logged-in session; never open a fresh login.
+
 ## Signal hierarchy (Verata's lesson: verified beats LinkedIn)
 
 Relationship **strength** only ever comes from owned, verified signals — actual correspondence. LinkedIn only ever adds **paths** (breadth), never confidence. A 2019 LinkedIn connection with zero emails is a cold path; a colleague who emailed the target last week is a warm one. Rank accordingly.
