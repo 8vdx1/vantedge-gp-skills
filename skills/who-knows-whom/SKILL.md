@@ -40,13 +40,15 @@ Relationship **strength** only ever comes from owned, verified signals — actua
 Only for a high-value target not reachable via Steps 1–2, and only after the explicit warning + consent above. The method is **facet-driven, not profile-visiting**: LinkedIn's search facets do the degree work server-side, so the result list itself is the answer and page loads stay minimal.
 
 1. **Ask the user up front:** scrape every results page, or cap it (e.g. first 3 pages)? Default to a cap.
-2. Open the faceted people search, pre-filtered to 1st + 2nd degree:
-   `https://www.linkedin.com/search/results/people/?origin=FACETED_SEARCH&network=%5B%22F%22%2C%22S%22%5D`
-3. **Current staff:** open the "Current companies" filter, type the target company in the facet search box, click the company, apply. Every result is a 1st/2nd-degree connection currently at the target. Extract name, headline, degree badge from each row.
-4. **Paginate like a human:** scroll down at varying speed, pause a random 5–7 seconds between pages, up to the agreed page cap.
-5. **Alumni (backchannel roster):** back on the base faceted URL → "All filters" → scroll to **Past companies** → add the target company → Show results → extract the same way. Former employees are the candid-reference pool for diligence.
-6. Cross-reference every extracted person against Step 1: anyone with recent email traffic with the firm is the warm path. Rank by owned-signal strength, not by LinkedIn degree. (Only if a specific 2nd-degree person is chosen for outreach is it worth one extra page load to view their mutual connections for the bridge.)
-7. Close the browser work as soon as the roster is captured — no extra browsing, no profile visits.
+2. **Warm the session first — never cold-jump.** Navigate to `linkedin.com/feed` and confirm signed-in before any search URL. (Live-tested: a direct search-URL jump from a fresh tab triggered the `merchantpool` detection redirect; the same search from a warmed, signed-in session sailed through.)
+3. **Resolve the company's numeric id** (one page load): visit `linkedin.com/company/<slug>/` and regex the HTML for `fsd_company:(\d+)`. The All-filters modal's obfuscated DOM makes UI clicking brittle — the URL facet is deterministic and identical in effect.
+4. **Current staff roster** — navigate to the faceted URL (1st+2nd only, at the target company):
+   `https://www.linkedin.com/search/results/people/?currentCompany=%5B%22<id>%22%5D&network=%5B%22F%22%2C%22S%22%5D&origin=FACETED_SEARCH`
+5. **Extract from the result cards — everything is inline** (live-verified): name, `• 1st`/`• 2nd` badge, headline, location, AND the mutual-connections line — *"Ravi C., Ankur A. and 4 other mutual connections"* — so **the bridges come free; no profile visits ever needed**. Parse cards from rendered text; don't rely on `<li>` structure (it shifts).
+6. **Paginate like a human:** scroll down at varying speed, pause a random 5–7 seconds between pages, up to the agreed cap.
+7. **Alumni (backchannel roster):** same URL with `pastCompany=%5B%22<id>%22%5D` instead — former employees, the candid-reference pool for diligence.
+8. Cross-reference every person and bridge against Step 1: a bridge with recent email traffic with the firm is the warm path. Rank by owned-signal strength, not LinkedIn degree.
+9. Close the tab as soon as the roster is captured — no extra browsing.
 
 **Step 4 — capture the finding.**
 Propose (approval-gated) a `vi_add_crm_note` on the relevant LP/deal: *"Warm path to <target>: 2nd degree via <bridge> (last emailed <date>). Checked <date>."* — so the intelligence lands in the CRM and the lookup never needs repeating.
