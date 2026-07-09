@@ -1,0 +1,14 @@
+{
+  "name": "vantedge-gp-skills",
+  "owner": {
+    "name": "VantedgeAI",
+    "email": "support@vantedgeai.com"
+  },
+  "plugins": [
+    {
+      "name": "vantedge-gp",
+      "source": "./",
+      "description": "GP & IR workflows for VantedgeAI — deal pipeline, LP CRM, email inbox, and warm-intro paths for Claude."
+    }
+  ]
+}

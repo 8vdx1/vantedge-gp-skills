@@ -46,23 +46,32 @@ The optional step of `who-knows-whom` automates the **user's own logged-in Linke
 
 ## Install (Claude Code)
 
-Point Claude Code at this repo as a plugin marketplace, then install:
-
+### A) With git (simplest, auto-updates)
 ```bash
 /plugin marketplace add 8vdx1/vantedge-gp-skills
 /plugin install vantedge-gp@vantedge-gp-skills
 ```
 
-Or clone it and load locally:
+### B) No git / no admin — local folder (recommended on locked-down Windows)
+GitHub install shells out to `git clone`, which needs a system-wide git. If you don't have that, install from a local copy instead — **no git, no admin**:
+1. On the repo page → **Code ▸ Download ZIP**, then unzip (e.g. to `C:\Users\<you>\vantedge-gp-skills`).
+2. In Claude Code, add it as a **local** marketplace and install:
+   ```bash
+   /plugin marketplace add C:\Users\<you>\vantedge-gp-skills
+   /plugin install vantedge-gp@vantedge-gp-skills
+   ```
+   A local path doesn't invoke git. You keep everything: `/vantedge-gp:*` command namespacing, the auto-update hook, and MCP auto-registration.
 
-```bash
-git clone https://github.com/8vdx1/vantedge-gp-skills.git
-# then in Claude Code:
-/plugin marketplace add ./vantedge-gp-skills
-/plugin install vantedge-gp@vantedge-gp-skills
+### C) Zero-plugin fallback — just drop the folders (guaranteed, no git, no plugin system)
+If even (B) is blocked, copy the skill/command folders straight into your Claude config — no git, no marketplace, no plugin machinery:
+```powershell
+# after downloading + unzipping the repo:
+Copy-Item ".\vantedge-gp-skills\skills\*"   "$env:USERPROFILE\.claude\skills\"   -Recurse -Force
+Copy-Item ".\vantedge-gp-skills\commands\*" "$env:USERPROFILE\.claude\commands\" -Recurse -Force
 ```
+Restart Claude Code. Skills auto-trigger; commands are invoked **bare** (`/brief`, not `/vantedge-gp:brief`). Trade-offs vs. (B): no command namespace (watch for name clashes with other tools), and no auto-update hook (re-download to update). MCP is unaffected — if it's already connected, the skills use it as-is.
 
-After install, the commands appear as `/vantedge-gp:<name>` (e.g. `/vantedge-gp:brief`) and the skills auto-trigger from natural phrasing ("catch me up", "who do I know at…", "add this deck"). Restart Claude Code if they don't show up immediately.
+After any route, commands/skills trigger from natural phrasing too ("catch me up", "who do I know at…", "add this deck"). Restart Claude Code if they don't appear immediately.
 
 > **Note on `/deal-intake` and other file-reading skills:** these read files off your local disk, so they only work in **Claude Code**, not claude.ai.
 
