@@ -15,6 +15,7 @@ Non-negotiable rules:
 - **Warn and get explicit consent every session** before the first LinkedIn action. Say plainly: *"This automates your logged-in LinkedIn session, which is against LinkedIn's terms and carries a real risk of account restriction. Proceed?"* No consent → skip Step 3 and answer from owned data only.
 - **One target per invocation.** Never loop over a list of people/companies. Never run this on a schedule.
 - **Human-paced**: few page loads, generous pauses, stop at the first useful answer. If LinkedIn shows a captcha, warning, or unusual-activity interstitial — **stop immediately**, tell the user, do not retry.
+- **Known detection signature** (hit in live testing): a redirect to `merchantpool*.linkedin.com/?session_id=…` with fingerprint params, empty page body. That IS the bot-detection pipeline — close the tab and stop. In our test this fired on the *first* CDP-driven navigation, before any scraping. Expect this flow to fail often; when it does, deliver Steps 1–2 results and say the LinkedIn check was blocked.
 - Steps 1–2 (owned data) are always safe and always come first. LinkedIn is the last resort for a high-value target, not the default.
 - This step requires a local browser session (Claude Code + the user's Chrome). In environments without one (claude.ai), do Steps 1–2 only and say so.
 
