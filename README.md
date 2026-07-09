@@ -12,18 +12,18 @@ Packages the VantedgeAI CRM + email surface into 10 slash commands and 10 backgr
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `/vantedge-gp:inbox` | Triage the email inbox — classified digest + proposed CRM actions for approval |
-| `/vantedge-gp:deal-intake` | Forwarded deck/intro → pipeline deal, optionally with data room + deck filed |
-| `/vantedge-gp:lp-followups` | Find LPs going quiet; propose tasks + draft nudges |
-| `/vantedge-gp:pipeline-review` | Full evidence-grounded pipeline review with stale-deal flags |
-| `/vantedge-gp:who-knows-whom` | Warmest intro path to a person/company — email graph + CRM, optional ⚠️ consent-gated LinkedIn check |
-| `/vantedge-gp:get-tasks` | Open CRM todos, prioritized by overdue/due and grouped by LP/deal (needs `vi_list_tasks` — see TODO.md) |
-| `/vantedge-gp:brief` | Day-on-day morning brief: what changed since yesterday across inbox, funnel, and pipeline |
-| `/vantedge-gp:velocity` | Time-in-stage, bottleneck stage, and stalled deals/LPs (LP stage-clock is exact) |
-| `/vantedge-gp:consultant-map` | Gatekeeper consultants ranked by advised AUM — one relationship, many LPs |
-| `/vantedge-gp:lp-connections` | "Who do I know at this LP?" via owned LinkedIn-export matches (needs `vi_lp_connections` — see TODO.md) |
+| Command | What it does for you |
+|---------|----------------------|
+| `/vantedge-gp:brief` | "Catch me up" — what changed since yesterday: new mail, LPs that moved, deals that shifted. |
+| `/vantedge-gp:inbox` | Reads your inbox and turns it into a to-do list — what came in, what it means, what to do. |
+| `/vantedge-gp:deal-intake` | Forward a deck, get a deal — pulls out the company, creates it, files the deck. |
+| `/vantedge-gp:pipeline-review` | Your whole pipeline, stage by stage, with the real email behind each update and what's gone stale. |
+| `/vantedge-gp:velocity` | Where deals and LPs get *stuck* — time-in-stage, the bottleneck, and who's sat too long. |
+| `/vantedge-gp:lp-followups` | Which LPs have gone quiet — ranked by who matters, with nudges drafted. |
+| `/vantedge-gp:consultant-map` | Your placement agents ranked by the money they steer — one intro, many LPs. |
+| `/vantedge-gp:who-knows-whom` | The warmest intro path to anyone — starting from who's actually emailed them (⚠️ optional LinkedIn step is risky). |
+| `/vantedge-gp:lp-connections` | "Who on my team already knows someone at this LP?" — from your own network, no LinkedIn risk. *(coming soon)* |
+| `/vantedge-gp:get-tasks` | Your open to-dos, sorted by what's overdue and what matters most. *(coming soon)* |
 
 ## Skills
 
