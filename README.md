@@ -8,7 +8,7 @@ The GP / investor-relations persona: working inbound deal flow, running a fundra
 
 ## What this plugin does
 
-Packages the VantedgeAI CRM + email surface into 6 slash commands and 6 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
+Packages the VantedgeAI CRM + email surface into 7 slash commands and 7 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
 
 ## Commands
 
@@ -20,6 +20,7 @@ Packages the VantedgeAI CRM + email surface into 6 slash commands and 6 backgrou
 | `/vantedge-gp:pipeline-review` | Full evidence-grounded pipeline review with stale-deal flags |
 | `/vantedge-gp:who-knows-whom` | Warmest intro path to a person/company — email graph + CRM, optional ⚠️ consent-gated LinkedIn check |
 | `/vantedge-gp:get-tasks` | Open CRM todos, prioritized by overdue/due and grouped by LP/deal (needs `vi_list_tasks` — see TODO.md) |
+| `/vantedge-gp:brief` | Day-on-day morning brief: what changed since yesterday across inbox, funnel, and pipeline |
 
 ## Skills
 
@@ -31,6 +32,7 @@ Packages the VantedgeAI CRM + email surface into 6 slash commands and 6 backgrou
 | `lp-crm` | LP naming quirk (`dealName` = LP identity), firm-configurable stages, call prep, follow-up hygiene |
 | `who-knows-whom` | Warm-path lookup: verified email-graph strength first, LinkedIn breadth second, optional live 2nd-degree check |
 | `get-tasks` | Surface + prioritize open CRM todos (depends on the not-yet-shipped `vi_list_tasks` read tool) |
+| `daily-brief` | Day-on-day change summary — inbox + funnel + deals-since-yesterday, delta not dump |
 
 ## ⚠️ LinkedIn risk warning (`who-knows-whom`)
 
