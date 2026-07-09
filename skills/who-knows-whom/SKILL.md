@@ -36,12 +36,17 @@ Relationship **strength** only ever comes from owned, verified signals — actua
 **Step 2 — the CRM (context tier).**
 `vi_list_lp_prospects(search=…)` and `vi_list_deals(search=…)` — is the target already a prospect, LP, deal, or contact? Check notes/stage. If the firm's LinkedIn-export matches are available in the LP record (the "who do I know here" feature), report those as *breadth* signals — connections, not proof of warmth.
 
-**Step 3 — live LinkedIn 2nd-degree check (optional, consent-gated, local-browser only).**
-Only for a high-value target not reachable via Steps 1–2, and only after the explicit warning + consent above:
-1. Search the person (or the org's people page) in the user's logged-in session.
-2. Read degree badges. **2nd degree is the only actionable result** — open the "mutual connections" list and capture the bridge names. (3rd degree shows no path — report the badge honestly as "distant, no visible route" and stop; do not chase it.)
-3. Cross-reference each bridge against Step 1: a bridge who also has recent email traffic with the user's firm is the warm path. Rank bridges by owned-signal strength, not by LinkedIn.
-4. Close the browser work as soon as the path is found — no extra browsing.
+**Step 3 — live LinkedIn network roster (optional, consent-gated, local-browser only).**
+Only for a high-value target not reachable via Steps 1–2, and only after the explicit warning + consent above. The method is **facet-driven, not profile-visiting**: LinkedIn's search facets do the degree work server-side, so the result list itself is the answer and page loads stay minimal.
+
+1. **Ask the user up front:** scrape every results page, or cap it (e.g. first 3 pages)? Default to a cap.
+2. Open the faceted people search, pre-filtered to 1st + 2nd degree:
+   `https://www.linkedin.com/search/results/people/?origin=FACETED_SEARCH&network=%5B%22F%22%2C%22S%22%5D`
+3. **Current staff:** open the "Current companies" filter, type the target company in the facet search box, click the company, apply. Every result is a 1st/2nd-degree connection currently at the target. Extract name, headline, degree badge from each row.
+4. **Paginate like a human:** scroll down at varying speed, pause a random 5–7 seconds between pages, up to the agreed page cap.
+5. **Alumni (backchannel roster):** back on the base faceted URL → "All filters" → scroll to **Past companies** → add the target company → Show results → extract the same way. Former employees are the candid-reference pool for diligence.
+6. Cross-reference every extracted person against Step 1: anyone with recent email traffic with the firm is the warm path. Rank by owned-signal strength, not by LinkedIn degree. (Only if a specific 2nd-degree person is chosen for outreach is it worth one extra page load to view their mutual connections for the bridge.)
+7. Close the browser work as soon as the roster is captured — no extra browsing, no profile visits.
 
 **Step 4 — capture the finding.**
 Propose (approval-gated) a `vi_add_crm_note` on the relevant LP/deal: *"Warm path to <target>: 2nd degree via <bridge> (last emailed <date>). Checked <date>."* — so the intelligence lands in the CRM and the lookup never needs repeating.
