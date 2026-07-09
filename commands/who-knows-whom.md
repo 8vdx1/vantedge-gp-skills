@@ -3,13 +3,13 @@ description: Find the warmest path to a person or company — email graph first,
 argument-hint: "[person or company, e.g. 'Peter Thornbury' or 'Oakspire Payments']"
 ---
 
-# Who Knows
+# Who Knows Whom
 
 > Uses the VantedgeAI MCP server. The optional LinkedIn step additionally requires a local browser session (Claude Code) and carries account risk — see below.
 
 Answer "who can open this door?" for the target in $ARGUMENTS: the warmest introduction path, through whom, with evidence.
 
-See the **who-knows** skill for the full method and the **vantedge-tool-map** skill for conventions.
+See the **who-knows-whom** skill for the full method and the **vantedge-tool-map** skill for conventions.
 
 Steps:
 1. Email graph: `vi_list_emails(q=target)` — who has corresponded with them, how recently; quote the last exchange (`vi_get_email`).

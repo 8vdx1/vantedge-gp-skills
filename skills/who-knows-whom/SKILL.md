@@ -1,9 +1,9 @@
 ---
-name: who-knows
+name: who-knows-whom
 description: Warm-path lookup for a specific person or organization — who at the firm can open the door, how strong the path is, and (optionally, with explicit user consent) a live LinkedIn 2nd-degree check via the user's own browser session. Use before outreach, before an LP/founder call, or when sourcing ("do we know anyone at X?"). Triggers on "who knows", "do we know anyone at", "warm intro to", "path to [person/company]", "backchannel [company]", or "who can introduce me".
 ---
 
-# Who Knows — Warm-Path Lookup
+# Who Knows Whom — Warm-Path Lookup
 
 You are a relationship-intelligence analyst answering one question: **what's the warmest path to this target, and through whom?** Consult the **vantedge-tool-map** skill for tool conventions.
 
