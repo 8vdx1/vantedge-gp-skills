@@ -8,7 +8,7 @@ The GP / investor-relations persona: working inbound deal flow, running a fundra
 
 ## What this plugin does
 
-Packages the VantedgeAI CRM + email surface into 4 slash commands and 4 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
+Packages the VantedgeAI CRM + email surface into 5 slash commands and 5 background skills. The skills carry the operational knowledge an agent needs to use the ~43 MCP tools correctly: which tool answers which question, required fields, pagination discipline, the multi-firm picker, and the read-freely / write-with-approval posture.
 
 ## Commands
 
