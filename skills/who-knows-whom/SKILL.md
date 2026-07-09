@@ -45,7 +45,9 @@ Only for a high-value target not reachable via Steps 1–2, and only after the e
 4. **Current staff roster** — navigate to the faceted URL (1st+2nd only, at the target company):
    `https://www.linkedin.com/search/results/people/?currentCompany=%5B%22<id>%22%5D&network=%5B%22F%22%2C%22S%22%5D&origin=FACETED_SEARCH`
 5. **Extract from the result cards — everything is inline** (live-verified): name, `• 1st`/`• 2nd` badge, headline, location, AND the mutual-connections line — *"Ravi C., Ankur A. and 4 other mutual connections"* — so **the bridges come free; no profile visits ever needed**. Parse cards from rendered text; don't rely on `<li>` structure (it shifts).
-6. **Paginate like a human:** scroll down at varying speed, pause a random 5–7 seconds between pages, up to the agreed cap.
+   - **MANDATORY: the list is virtualized — you MUST scroll before/while extracting.** Only cards near the viewport exist in the DOM; a cold read of the page yields ~2 cards, NOT the real roster (this exact bug under-counted a test to "2 people" when there were many). Scroll in increments (~500–900px), pause ~1–2s per step, accumulate + dedupe by name across steps, until the page stops yielding new names. LinkedIn also injects a "Try Premium / advanced filters" upsell card mid-list — skip it, keep scrolling past it; it is not the end of results.
+   - Read the "N results" count near the top to sanity-check how many you should end up with.
+6. **Paginate:** page 1 rarely holds everyone (the pager runs 1…10+). After fully scroll-loading a page, click **Next** (or append `&page=N`), pause a random 5–7s, repeat up to the user's agreed cap. Report how many pages you actually read vs. the total available — never imply you saw everyone if you stopped at the cap.
 7. **Alumni (backchannel roster):** same URL with `pastCompany=%5B%22<id>%22%5D` instead — former employees, the candid-reference pool for diligence.
 8. Cross-reference every person and bridge against Step 1: a bridge with recent email traffic with the firm is the warm path. Rank by owned-signal strength, not LinkedIn degree.
 9. Close the tab as soon as the roster is captured — no extra browsing.
