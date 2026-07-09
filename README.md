@@ -68,6 +68,8 @@ After install, the commands appear as `/vantedge-gp:<name>` (e.g. `/vantedge-gp:
 
 ## Updating
 
+**Auto-nudge:** the plugin checks once a day (on session start, fail-silent) whether a newer version has been published, and if so tells you the exact update commands — no need to be told out-of-band. This is a lightweight `SessionStart` hook (Node, stdlib only, one GitHub request/day, never blocks startup); Claude Code will ask you to approve the hook when you install the plugin.
+
 Your install is a snapshot, not a live mirror — you pull updates when you want them. There are **two independent layers**:
 
 - **Skills / commands changed** (new command, tweaked behavior — published to this repo): refresh the marketplace and re-install.

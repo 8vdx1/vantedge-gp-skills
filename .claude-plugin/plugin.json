@@ -1,6 +1,6 @@
 {
   "name": "vantedge-gp",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "GP & IR workflows for VantedgeAI \u2014 deal pipeline, LP CRM, and the unified email inbox. Triage inbound mail, intake deals from forwarded decks, work the fundraise funnel, and keep the CRM honest \u2014 all through the VantedgeAI MCP server with human approval on every write.",
   "author": {
     "name": "VantedgeAI",
@@ -20,6 +20,7 @@
     "private-credit",
     "crm"
   ],
+  "hooks": "./hooks/hooks.json",
   "mcpServers": {
     "vantedge": {
       "type": "http",
