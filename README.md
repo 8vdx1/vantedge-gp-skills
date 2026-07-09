@@ -44,6 +44,28 @@ Packages the VantedgeAI CRM + email surface into 10 slash commands and 10 backgr
 
 The optional step of `who-knows-whom` automates the **user's own logged-in LinkedIn session** via a local browser. This violates LinkedIn's User Agreement and carries a real risk of **account restriction or ban**. The skill therefore: requires fresh, explicit user consent every session before any LinkedIn action; runs one target per invocation, human-paced; stops immediately on any captcha or warning; and never messages, connects, or batch-scrapes. It only works in Claude Code with a local browser — claude.ai sessions skip it automatically. Relationship *strength* always comes from the firm's own email data; LinkedIn only ever suggests paths.
 
+## Install (Claude Code)
+
+Point Claude Code at this repo as a plugin marketplace, then install:
+
+```bash
+/plugin marketplace add 8vdx1/vantedge-gp-skills
+/plugin install vantedge-gp@vantedge-gp-skills
+```
+
+Or clone it and load locally:
+
+```bash
+git clone https://github.com/8vdx1/vantedge-gp-skills.git
+# then in Claude Code:
+/plugin marketplace add ./vantedge-gp-skills
+/plugin install vantedge-gp@vantedge-gp-skills
+```
+
+After install, the commands appear as `/vantedge-gp:<name>` (e.g. `/vantedge-gp:brief`) and the skills auto-trigger from natural phrasing ("catch me up", "who do I know at…", "add this deck"). Restart Claude Code if they don't show up immediately.
+
+> **Note on `/deal-intake` and other file-reading skills:** these read files off your local disk, so they only work in **Claude Code**, not claude.ai.
+
 ## Connection
 
 The plugin registers the VantedgeAI MCP server (`https://fundos.vantedgeai.com/mcp`). Authenticate via OAuth on first use, or set a Bearer API key for headless use. If a tool referenced by these skills is missing from your session, reconnect the connector — tool catalogues are cached at connect time.
