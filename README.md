@@ -18,6 +18,7 @@ Packages the VantedgeAI CRM + email surface into 4 slash commands and 4 backgrou
 | `/vantedge-gp:deal-intake` | Forwarded deck/intro → pipeline deal, optionally with data room + deck filed |
 | `/vantedge-gp:lp-followups` | Find LPs going quiet; propose tasks + draft nudges |
 | `/vantedge-gp:pipeline-review` | Full evidence-grounded pipeline review with stale-deal flags |
+| `/vantedge-gp:who-knows` | Warmest intro path to a person/company — email graph + CRM, optional ⚠️ consent-gated LinkedIn check |
 
 ## Skills
 
@@ -27,6 +28,11 @@ Packages the VantedgeAI CRM + email surface into 4 slash commands and 4 backgrou
 | `inbox-triage` | Two email stores, list/detail pattern, classification → action mapping |
 | `deal-pipeline` | Pipeline reads done completely, deal creation's required fields, stage enum, the per-deal evidence pattern |
 | `lp-crm` | LP naming quirk (`dealName` = LP identity), firm-configurable stages, call prep, follow-up hygiene |
+| `who-knows` | Warm-path lookup: verified email-graph strength first, LinkedIn breadth second, optional live 2nd-degree check |
+
+## ⚠️ LinkedIn risk warning (`who-knows`)
+
+The optional step of `who-knows` automates the **user's own logged-in LinkedIn session** via a local browser. This violates LinkedIn's User Agreement and carries a real risk of **account restriction or ban**. The skill therefore: requires fresh, explicit user consent every session before any LinkedIn action; runs one target per invocation, human-paced; stops immediately on any captcha or warning; and never messages, connects, or batch-scrapes. It only works in Claude Code with a local browser — claude.ai sessions skip it automatically. Relationship *strength* always comes from the firm's own email data; LinkedIn only ever suggests paths.
 
 ## Connection
 
